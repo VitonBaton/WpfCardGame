@@ -1,0 +1,52 @@
+<Page x:Class="View.CardGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:View"
+      mc:Ignorable="d"
+      Title="GamePage" Height="462" Width="792">
+    <Page.Background>
+        <ImageBrush ImageSource="images/tabletop.jpg"></ImageBrush>
+    </Page.Background>
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid DataContext="{Binding Deck, Mode=TwoWay}" d:DataContext="{local:DeckViewItem}" Margin="5 0">
+                <Image
+                    Height="81"
+                    Width="56"
+                    Source="images/back-blue.png"
+                />
+                <Image
+                    Height="81"
+                    Width="56"
+                    Visibility="{Binding TopCardVisibility}"
+                    Source="{Binding CardSource, Mode=TwoWay}"
+                    MouseDown="Deck_OnMouseDown"
+                    Tag="{Binding}"
+                    Margin="0 0 0 15"
+                />
+            </Grid>
+            <ItemsControl ItemsSource="{Binding Path=Layout}" Name="IcCardList">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="local:CardViewItem">
+                        <Image
+                            Height="81"
+                            Width="56"
+                            Source="{Binding CardSource, Mode=TwoWay}"
+                            AllowDrop="{Binding AllowDrop, Mode=TwoWay}"
+                            Drop="Card_OnDrop"
+                            Tag="{Binding}"
+                            Margin="5 0"
+                        />
+                    </DataTemplate> 
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</Page>

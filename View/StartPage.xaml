@@ -1,0 +1,39 @@
+<Page x:Class="View.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="StartPage" Height="462" Width="792">
+    <Page.Background>
+        <ImageBrush ImageSource="images/tabletop.jpg"></ImageBrush>
+    </Page.Background>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock  Text="CARD GAME" TextAlignment="Center" Margin="0 -30 0 20" Foreground="White" FontSize="18"></TextBlock>
+        <Button 
+            Content="DEFAULT"
+            Click="Default_OnClick"
+            Foreground="White"
+            FontSize="20"
+            Background="Green"
+            BorderBrush="White"
+            Padding="5"/>
+        <Button
+            Content="SURE DEFEAT"
+            Margin="0 15"
+            Click="SureDefeat_OnClick"
+            Foreground="White"
+            FontSize="20"
+            Background="Green"
+            BorderBrush="White"
+            Padding="5"/>
+        <Button 
+            Content="SURE WIN"
+            Click="SureWin_OnClick"
+            Foreground="White"
+            FontSize="20"
+            Background="Green"
+            BorderBrush="White"
+            Padding="5"/>
+    </StackPanel>
+</Page>
