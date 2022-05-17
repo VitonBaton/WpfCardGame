@@ -7,18 +7,18 @@ public class SureDefeatDeckCreator : IDeckCreator
 {
     public IEnumerable<Card> CreateDeck()
     {
-        var ranks = Enum.GetValues(typeof(Card.CardRank)).Cast<Card.CardRank>();
-        var suits = new List<Card.CardSuit>(new[] {Card.CardSuit.Hearts});
+        var suits = Enum.GetValues(typeof(Card.CardSuit)).Cast<Card.CardSuit>();
+        var ranks = new List<Card.CardRank>(new[] {Card.CardRank.Ace});
+        
+        var otherRanks = new List<Card.CardRank>(new[] {Card.CardRank.King, Card.CardRank.Queen});
+        var otherSuits = new List<Card.CardSuit>(new[] {Card.CardSuit.Spades, Card.CardSuit.Diamonds});
 
-        var otherRanks = new List<Card.CardRank>(new[] {Card.CardRank.King, Card.CardRank.Ace});
-        var otherSuits = new List<Card.CardSuit>(new[] {Card.CardSuit.Clubs});
-        
         var deck = ranks
-            .SelectMany(_ => suits, (rank, suit) => new Card(rank,suit))
-            .Concat(otherRanks.SelectMany(_ => otherSuits, (rank, suit) => new Card(rank,suit)))
+            .SelectMany(_ => suits, (rank, suit) => new Card(rank, suit))
             .ToList();
-        
-        deck.Shuffle();
+        deck.Reverse();
+        deck.Add(new Card(Card.CardRank.Jack, Card.CardSuit.Diamonds));
+        deck.AddRange(otherRanks.SelectMany(_ => otherSuits, (rank, suit) => new Card(rank, suit)));
 
         return deck;
     }

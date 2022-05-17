@@ -61,7 +61,11 @@ public class GameProvider : IGameProvider
 
         Layout[index] = newCard;
         AvailableTurns[index] = false;
-        EvaluateAvailableTurns();
+        if (!IsTurnAvailable)
+        {
+            EvaluateAvailableTurns();
+        }
+
         return true;
     }
 

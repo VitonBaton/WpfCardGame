@@ -10,7 +10,7 @@
     </Page.Background>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock  Text="CARD GAME" TextAlignment="Center" Margin="0 -30 0 20" Foreground="White" FontSize="18"></TextBlock>
-        <Button 
+        <Button
             Content="DEFAULT"
             Click="Default_OnClick"
             Foreground="White"
