@@ -25,7 +25,7 @@ public class GameProvider : IGameProvider
     {
         Deck.Push(card);
     }
-    
+
     public void StartGame(IDeckCreator deckCreator)
     {
         Deck = new Stack<Card>(deckCreator.CreateDeck());
@@ -36,21 +36,8 @@ public class GameProvider : IGameProvider
             Layout.Add(Deck.Pop() ?? throw new InvalidOperationException());
             AvailableTurns.Add(false);
         }
-        EvaluateAvailableTurns();
-    }
-    
-    public List<int> GetAvailableTurns()
-    {
-        var result = new List<int>();
-        for (var i = 0; i < AvailableTurns.Count; i++)
-        {
-            if (AvailableTurns[i])
-            {
-                result.Add(i);
-            }
-        }
 
-        return result;
+        EvaluateAvailableTurns();
     }
 
     public bool TryTurn(int index, Card newCard)
