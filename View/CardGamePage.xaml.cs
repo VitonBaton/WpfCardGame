@@ -20,26 +20,20 @@ public partial class CardGamePage
 
     private void Deck_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
-        if (_cardGameViewModel.IsTurnAvailable)
+        var deck = _cardGameViewModel.Deck;
+        var data = new DataObject();
+        if (deck != null)
         {
-            var deck = _cardGameViewModel.Deck;
-            var data = new DataObject();
-            if (deck != null)
-            {
-                data.SetData("CardSource", deck.CardSource);
-            }
-            else
-            {
-                MessageBox.Show("Something went wrong");
-            }
-            DragDrop.DoDragDrop((Image)sender, data, DragDropEffects.All);
+            data.SetData("CardSource", deck.CardSource);
         }
         else
         {
-            EndGamePage("YOU ARE LOSE!");
+            MessageBox.Show("Something went wrong");
         }
+
+        DragDrop.DoDragDrop((Image) sender, data, DragDropEffects.All);
     }
-        
+
     private void Card_OnDrop(object sender, DragEventArgs e)
     {
         if (e.Data.GetData("CardSource") is string data)
@@ -53,7 +47,7 @@ public partial class CardGamePage
                 list[index] = item;
             }
             
-            if (_cardGameViewModel.DeckCard is null)
+            if (_cardGameViewModel.IsWin)
             {
                 EndGamePage("YOU ARE WIN!");
                 return;

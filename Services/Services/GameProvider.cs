@@ -9,6 +9,7 @@ public class GameProvider : IGameProvider
     public List<Card> Layout { get; private set; } = new();
     public List<bool> AvailableTurns { get; private set; } = new();
     public bool IsTurnAvailable => AvailableTurns.Any(t => t);
+    public bool IsWin => Deck.Count == 0;
     
     public Card? GetCardFromDeck()
     {

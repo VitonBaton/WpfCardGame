@@ -15,6 +15,7 @@ public class CardGameViewModel : INotifyPropertyChanged
     private readonly IDeckCreator _deckCreator;
 
     public Card? DeckCard;
+    public bool IsWin => _gameProvider.IsWin;
     public bool IsTurnAvailable => _gameProvider.IsTurnAvailable;
     public ObservableCollection<CardViewItem> Layout { get; set; }
     public DeckViewItem? Deck { get; set; }

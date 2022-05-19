@@ -4,6 +4,7 @@ namespace Services.Interfaces;
 
 public interface IGameProvider
 {
+    public bool IsWin { get; }
     public bool IsTurnAvailable { get;}
     public List<Card> Layout { get;}
     public List<bool> AvailableTurns { get; }
