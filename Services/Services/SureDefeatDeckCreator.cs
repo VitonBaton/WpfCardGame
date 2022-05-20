@@ -16,10 +16,11 @@ public class SureDefeatDeckCreator : IDeckCreator
         var deck = ranks
             .SelectMany(_ => suits, (rank, suit) => new Card(rank, suit))
             .ToList();
+        deck.Add(new Card(Card.CardRank.Five, Card.CardSuit.Spades));
         deck.Reverse();
         deck.Add(new Card(Card.CardRank.Jack, Card.CardSuit.Diamonds));
         deck.AddRange(otherRanks.SelectMany(_ => otherSuits, (rank, suit) => new Card(rank, suit)));
-
+        
         return deck;
     }
 }
